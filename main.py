@@ -12,7 +12,7 @@ api_key=os.getenv("API_KEY")
 st.title ("Weather Now")
 
 city= st.text_input ("Enter city name")
-city = city.strip()   
+city = city.strip()
 clicked= st.button("Get weather")
 
 if city or (clicked or city):
@@ -52,7 +52,7 @@ if city or (clicked or city):
         st.write(f"🌡️Temperature {temp}°C")
         st.write(f"💧Humidity {hum}%")
         st.write(f"🌬️Wind Speed {wind}m/s")
-        st.write(f"☁️Cloudiness {clouds}")
+        st.write(f"☁️Cloudiness {clouds}%")
         st.write(f"{emoji}{desc.capitalize()}")
         st.write(f"Local time: {local_time.strftime('%d-%m-%Y %H:%M')}")
         folium_static(map_object)
@@ -61,6 +61,6 @@ if city or (clicked or city):
             st.error("City not found. Please try again")
 
     else:
-        st.error(f"Unexpected error occurred. Status code {response.status_code}")
+        st.error(f"Unexpected error occurred. Status code: {response.status_code}")
 
-else:print("Please enter a city name and press ENTER or click a button")
+else:st.info("Please enter a city name and press ENTER or click a button")
